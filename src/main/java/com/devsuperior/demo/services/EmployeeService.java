@@ -23,9 +23,9 @@ public class EmployeeService {
     }
 
     @Transactional(readOnly = true)
-    public Page<EmployeeDTO> findAll() {
-        Pageable pageable = PageRequest.of(0, 12, Sort.by("name").ascending());
-        Page employeePage = repository.findAll(pageable).map(employee -> new EmployeeDTO(employee));
+    public Page<EmployeeDTO> findAll(Pageable pageable) {
+        Pageable page = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by("name").ascending());
+        Page employeePage = repository.findAll(page).map(employee -> new EmployeeDTO(employee));
 
         return employeePage;
     }

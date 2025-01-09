@@ -18,6 +18,7 @@ public class DepartmentService {
 
     @Transactional(readOnly = true)
     public List<DepartmentDto> findAll() {
-        return repository.findAll().stream().map(department -> new DepartmentDto(department)).sorted((o1, o2) -> o1.getName().compareTo(o2.getName())).toList();
+        return repository.findAll().stream().map(department -> new DepartmentDto(department))
+                .sorted((o1, o2) -> o1.getName().compareTo(o2.getName())).toList();
     }
 }

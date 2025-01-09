@@ -24,8 +24,8 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<EmployeeDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<Page<EmployeeDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
 
     @PostMapping
