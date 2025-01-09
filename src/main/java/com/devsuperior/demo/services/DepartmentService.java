@@ -1,6 +1,6 @@
 package com.devsuperior.demo.services;
 
-import com.devsuperior.demo.entities.Department;
+import com.devsuperior.demo.dto.DepartmentDto;
 import com.devsuperior.demo.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ public class DepartmentService {
     }
 
     @Transactional(readOnly = true)
-    public List<Department> findAll() {
-        return repository.findAll();
+    public List<DepartmentDto> findAll() {
+        return repository.findAll().stream().map(department -> new DepartmentDto(department)).sorted((o1, o2) -> o1.getName().compareTo(o2.getName())).toList();
     }
 }

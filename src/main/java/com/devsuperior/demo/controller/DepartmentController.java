@@ -1,5 +1,6 @@
-package com.devsuperior.demo;
+package com.devsuperior.demo.controller;
 
+import com.devsuperior.demo.dto.DepartmentDto;
 import com.devsuperior.demo.entities.Department;
 import com.devsuperior.demo.services.DepartmentService;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class DepartmentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Department>> findAll() {
+    public ResponseEntity<List<DepartmentDto>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 
